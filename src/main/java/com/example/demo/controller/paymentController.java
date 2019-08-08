@@ -91,18 +91,18 @@ public class paymentController {
 				else 
 				{
 					System.out.println("Invalid expire date");
-					throw new InvalidCardException("invalid card");
+					throw new InvalidCardException("--------- invalid card ----------- ");
 				}
 			}
 			else
 			{
 				System.out.println("Invalid expire date");
-				throw new InvalidCardException("invalid card");
+				throw new InvalidCardException("--------- invalid card ----------- ");
 			}
 		}
 		else {
 			System.out.println("Invalid expire date");
-			throw new InvalidCardException("invalid card");
+			throw new InvalidCardException("--------- invalid card ----------- ");
 		}
 		
 		//primary cvv validation
@@ -110,7 +110,7 @@ public class paymentController {
 			System.out.println("acceptable cvv");
 		} else {
 			System.out.println("Invalid cvv format, Cvv should be 3 digit");
-			throw new InvalidCardException("invalid card");
+			throw new InvalidCardException("--------- invalid card ----------- ");
 		}
 		
 		//primary bill validation
@@ -119,7 +119,7 @@ public class paymentController {
 		}
 		else {
 			System.out.println("negative amount");
-			throw new ArithmeticException("########## You Entered Negative Amount ##########");
+			throw new ArithmeticException("--------- You Entered Negative Amount ----------");
 		}
 		
 //		################################# Connection to Simulator ##############################################
