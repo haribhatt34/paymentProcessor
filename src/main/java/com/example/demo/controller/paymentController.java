@@ -19,8 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.demo.exception.InvalidCardException;
-
 @RestController
 public class paymentController {
 
@@ -35,8 +33,10 @@ public class paymentController {
 
 	@PostMapping("/paymentProcessor")
 	public ModelAndView paymentProcessor(HttpServletRequest request)
-			throws InvalidCardException, UnsupportedEncodingException, IOException {
-
+			throws UnsupportedEncodingException, IOException {
+		
+		ModelAndView mv = new ModelAndView();
+		
 //      ############################ Fetching details from UI ##################################		
 		String merchantId = request.getParameter("merchant");
 		String cardNo = request.getParameter("cardNo");
@@ -55,7 +55,10 @@ public class paymentController {
 		if (!(cardNo.matches(Visa) || cardNo.matches(Maestro) || cardNo.matches(JCB) || cardNo.matches(UnionPay)
 				|| cardNo.matches(Amex))) {
 			LOGGER.info("invalid card");
-			throw new InvalidCardException();
+			mv.setViewName("InvalidCard");
+			return mv;
+			
+			//throw new InvalidCardException();
 		} else {
 			LOGGER.info("valid card");
 		}
@@ -76,15 +79,24 @@ public class paymentController {
 					LOGGER.info("valid expire date");
 				} else {
 					LOGGER.info("Invalid expire date");
-					throw new InvalidCardException();
+					mv.setViewName("InvalidCard");
+					return mv;
+					
+					//throw new InvalidCardException();
 				}
 			} else {
 				LOGGER.info("Invalid expire date");
-				throw new InvalidCardException();
+				mv.setViewName("InvalidCard");
+				return mv;
+				
+				//throw new InvalidCardException();
 			}
 		} else {
 			LOGGER.info("Invalid expire date");
-			throw new InvalidCardException();
+			mv.setViewName("InvalidCard");
+			return mv;
+			
+			///throw new InvalidCardException();
 		}
 
 		// primary cvv validation
@@ -92,7 +104,10 @@ public class paymentController {
 			LOGGER.info("acceptable cvv");
 		} else {
 			LOGGER.info("Invalid cvv format, Cvv should be 3 digit");
-			throw new InvalidCardException();
+			mv.setViewName("InvalidCard");
+			return mv;
+			
+			//throw new InvalidCardException();
 		}
 
 		// primary bill validation
@@ -100,7 +115,10 @@ public class paymentController {
 			LOGGER.info("positive amount");
 		} else {
 			LOGGER.info("negative amount");
-			throw new ArithmeticException("---------- You Entered Negative Amount --------");
+			mv.setViewName("NegativeAmount");
+			return mv;
+			
+			//throw new ArithmeticException("---------- You Entered Negative Amount --------");
 		}
 
 		LOGGER.info("Done!!");
@@ -134,8 +152,6 @@ public class paymentController {
 			LOGGER.info(finalResponse);
 
 			String[] finalResponseArray = finalResponse.split("_");
-
-			ModelAndView mv = new ModelAndView();
 
 			if (finalResponseArray[0].contentEquals("250")) {
 				LOGGER.info("Pending Transaction, waiting for otp");
