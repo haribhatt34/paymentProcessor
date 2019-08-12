@@ -43,7 +43,6 @@ public class paymentController {
 		String expiryDate = request.getParameter("expiryDate");
 		String cvv = request.getParameter("cvv");
 		String bill = request.getParameter("bill");
-		String pin = request.getParameter("pin");
 
 //      ############################# Primary Validation #######################################		
 		String Visa = "^4[0-9]{12}(?:[0-9]{3})?$";
@@ -59,14 +58,6 @@ public class paymentController {
 			throw new InvalidCardException();
 		} else {
 			LOGGER.info("valid card");
-		}
-
-		// primary pin validation
-		if (pin.length() == 4 || pin.length() == 6) {
-			LOGGER.info("valid pin");
-		} else {
-			LOGGER.info("Invalid pin format");
-			throw new InvalidCardException();
 		}
 
 		// primary expire date validation
@@ -126,8 +117,7 @@ public class paymentController {
 		con.setDoOutput(true);
 
 		String jsonInputString = "{\"merchantId\":\"" + merchantId + "\",\"cardNo\": \"" + cardNo
-				+ "\",\"expiryDate\": \"" + expiryDate + "\",\"cvv\": \"" + cvv + "\",\"pin\": \"" + pin
-				+ "\",\"bill\":\"" + bill + "\"}";
+				+ "\",\"expiryDate\": \"" + expiryDate + "\",\"cvv\": \"" + cvv + "\",\"bill\":\"" + bill + "\"}";
 
 		try (OutputStream os = con.getOutputStream()) {
 			byte[] input = jsonInputString.getBytes("utf-8");
