@@ -26,7 +26,7 @@
 	<br>
 	<div align="center">
 		<img style="height: 130px; width: 130px;" alt="Success"
-			src="/images/image1.jpg">
+			src="https://i.imgur.com/vC70qKU.jpg">
 	</div>
 	<br>
 	<br>

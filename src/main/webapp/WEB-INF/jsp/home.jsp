@@ -20,10 +20,10 @@
 					<td>
 						<select name="merchant">
 						  <option value="1">--Select Merchant--</option>
-						  <option value="1">Flipkart</option>
-						  <option value="2">Amazon</option>
-						  <option value="3">Myntra</option>
-						  <option value="4">Walmart</option>
+						  <option value="1">Merchant1</option>
+						  <option value="2">Merchant2</option>
+						  <option value="3">Merchant3</option>
+						  <option value="4">Merchant4</option>
 						</select>
 					</td>
 				</tr>
@@ -40,14 +40,10 @@
 					<td><input type="password" name="cvv"></td>
 				</tr>
 				<tr class="active">
-					<td>PIN</td>
-					<td><input type="password" name="pin"></td>
-				</tr>
-				<tr class="info">
-					<td>Bill Amount</td>
+					<td>Amount</td>
 					<td><input type="text" name="bill"></td>
 				</tr>
-				<tr class="active">
+				<tr class="info">
 					<td></td>
 					<td><input type="submit" value="PayNow"></td>
 				</tr>

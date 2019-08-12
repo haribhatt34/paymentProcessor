@@ -13,7 +13,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
-<body style="background-image: url('/images/unauthorize.jpg');background-repeat: no-repeat;background-size: cover;">
+<body style="background-image: url('https://i.imgur.com/V7xfL4T.jpg');background-repeat: no-repeat;background-size: cover;">
 <h1 style="color: white;text-align:center;margin-top:50px;"><c:out value="${Message}"/></h1>
 </body>
 </html>
