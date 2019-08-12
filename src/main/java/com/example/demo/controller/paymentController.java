@@ -67,9 +67,9 @@ public class paymentController {
 		LocalDate localDate = LocalDate.now();
 		String local = DateTimeFormatter.ofPattern("MMyy").format(localDate).toString();
 		int expmonth = Integer.parseInt(expiryDate.substring(0, 2));
-		int expyear = Integer.parseInt(expiryDate.substring(2));
+		int expyear = Integer.parseInt(expiryDate.substring(2,4));
 		int currentmonth = Integer.parseInt(local.substring(0, 2));
-		int currentyear = Integer.parseInt(local.substring(2));
+		int currentyear = Integer.parseInt(local.substring(2,4));
 
 		if (expmonth >= 1 && expmonth <= 12) {
 			if (expyear > currentyear) {
