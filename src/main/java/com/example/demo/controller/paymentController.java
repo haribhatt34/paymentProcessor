@@ -125,7 +125,7 @@ public class paymentController {
 
 //		################################# Connection to Simulator ##############################################
 
-		URL url = new URL("http://13.127.134.6:8080/paymentSimulator/paymentSimulator");
+		URL url = new URL("http://13.127.134.6:8080/paymentSimulator");
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
 		// add request header
 		con.setRequestMethod("POST");
@@ -172,7 +172,7 @@ public class paymentController {
 		String otp = request.getParameter("otp");
 		String transactionId = request.getParameter("transaction");
 
-		URL url = new URL("http://13.127.134.6:8080/paymentSimulator/debitCredit");
+		URL url = new URL("http://13.127.134.6:8080/debitCredit");
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
 		// add request header
 		con.setRequestMethod("POST");
